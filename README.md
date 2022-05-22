@@ -8,3 +8,4 @@ At the end of the game, there'll be a player report and a property report for yo
 
 ### Easter egg
 See what happens when you refuse to enter a digit too many times when asked for the number of players hahaha.
+This game does <b>not</b> tolerate disobedience.
