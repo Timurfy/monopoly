@@ -17,11 +17,10 @@ def game_start():
     board = generate_board()
     print("==========================================")
     print("The game is starting now. Get ready, greedy capitalists!")
-    print("==========================================")
 
     # While players still alive, take turn
     #while players_alive: set this up later
-    for x in range(20):
+    for x in range(10):
         for player in playlist:
             # Announce round
             if player == playlist[0]:
@@ -93,14 +92,10 @@ def game_start():
                     print("Wahoo! {a} has hit landed on Free Parking, and has received ${b}.".format(a=name, b=free_parking))
                     player.get(free_parking)
                     free_parking = 0
-        
-    for player in playlist:
-        b = ''
-        for property in player.properties:
-            b += property + ', '
-        print(("{a} currently owns {b}and has ${c}.").format(a=player.name, b=b, c=player.money))
 
         # TODO: Add in a winner check at the end of each turn, then break if win
+        
     property_report(board)
+    player_report(playlist)
 
 game_start()
