@@ -1,6 +1,6 @@
 from player_sheet import *
 from set_up import generate_board, form_players
-from helpers import dice_roll, players_alive, property_report
+from helpers import dice_roll, players_alive, property_report, player_report, end_game
 from random import *
 import time
 
@@ -8,6 +8,7 @@ def game_start():
     # Set up measurements
     rounds = 0
     free_parking = 0
+    manual = True
 
     # Create players, returns list of players in random order
     playlist = form_players()
@@ -15,8 +16,21 @@ def game_start():
 
     # Generate board, a list accessible by position
     board = generate_board()
+
+    # Check if manual mode on
+    check = input("Do you want to see each turn in real-time? Y/N\n")
+    if check == "N":
+        manual = False
+    elif check != "Y":
+        time.sleep(1)
+        print("oi don't break my code leh")
+        time.sleep(1)
+        print("goodbye")
+        quit()
+
     print("==========================================")
     print("The game is starting now. Get ready, greedy capitalists!")
+    print("==========================================")
 
     # While players still alive, take turn
     #while players_alive: set this up later
@@ -25,10 +39,11 @@ def game_start():
             # Announce round
             if player == playlist[0]:
                 rounds += 1
-                time.sleep(2)
+                time.sleep(1)
                 print("==========================================")
                 print("Round {a} is starting now!".format(a=rounds))
-                input("Ready? If so, press ENTER.")
+                if manual == True:
+                    input("Ready? If so, press ENTER.")
                 print("==========================================")
 
             name = player.name
@@ -94,8 +109,8 @@ def game_start():
                     free_parking = 0
 
         # TODO: Add in a winner check at the end of each turn, then break if win
-        
     property_report(board)
     player_report(playlist)
+    end_game()
 
 game_start()
