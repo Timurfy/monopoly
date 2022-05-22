@@ -1,4 +1,5 @@
 import random
+import time
 
 def dice_roll(roll_count):
     roll_1 = random.randint(1,3)
@@ -16,6 +17,16 @@ def players_alive(playlist, num_players):
         if (dead == (num_players - 1)):
             return False
     return True
+
+def player_report(playlist):
+    print("=====================")
+    print("PLAYER REPORT")
+    print("=====================")
+    for player in playlist:
+        b = ''
+        for property in player.properties:
+            b += property + ', '
+        print(("{a} currently owns {b}and has ${c}.").format(a=player.name, b=b, c=player.money))
 
 def property_report(board):
     print("=====================")
@@ -35,3 +46,9 @@ def property_report(board):
     print("=====================")
     print("END OF REPORT")
     print("=====================")
+
+def end_game():
+    print("==========================================")
+    print("Thank you for playing! Goodbye.")
+    print("==========================================")
+    time.sleep(1)
